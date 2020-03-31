@@ -1,0 +1,2 @@
+rootProject.name='OMDB_clientApp'
+include ':app'
