@@ -1,6 +1,7 @@
 package com.example.omdb_clientapp.api;
 
-import com.example.omdb_clientapp.SearchResult;
+import com.example.omdb_clientapp.model.OmdbJsonResponse;
+import com.example.omdb_clientapp.model.SearchResult;
 
 import java.util.List;
 
@@ -42,12 +43,12 @@ public class RetrofitClient {
 
     public interface MovieApi {
 
-        default Call<?/*Ambigious Generic*/> searchMoviesByTitle(String query) {
+        default Call<OmdbJsonResponse> searchMoviesByTitle(String query) {
             return performQuery(query, RetrofitClient.API_KEY);
         }
 
         @GET("/")
-        Call<ResponseBody> performQuery(@Query("s") String name, @Query("apikey") String apikey);
+        Call<OmdbJsonResponse> performQuery(@Query("s") String name, @Query("apikey") String apikey);
 
     }
 
