@@ -2,12 +2,14 @@ package com.example.omdb_clientapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.omdb_clientapp.api.RetrofitClient;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -31,14 +33,15 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                logv(response.headers().toString());
-                try {
-                    assert response.body() != null;
-                    logv(response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                List<SearchResult> Results= (List<SearchResult>) response.body();
+
+                for(SearchResult r: Results){
+                    Log.d("Name " , r.getTitle());
+                    Log.d("Year " , r.getYear());
+                    Log.d("IMDB " , r.getImdbID());
+                    Log.d("Type" , r.getType());
+                    Log.d("Poster " , r.getPoster());
                 }
-                logv(call.request().url().toString().concat("bodyyyyyyewe"));
             }
 
             @Override
@@ -48,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
-
 
     }
 
