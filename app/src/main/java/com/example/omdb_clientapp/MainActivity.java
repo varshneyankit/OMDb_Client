@@ -2,14 +2,16 @@ package com.example.omdb_clientapp;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.omdb_clientapp.api.RetrofitClient;
 import com.example.omdb_clientapp.model.OmdbJsonResponse;
 import com.example.omdb_clientapp.model.SearchResult;
-
+import com.example.omdb_clientapp.ui.MovieListFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,16 +23,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FrameLayout fl = findViewById(R.id.fragment_container);
+        navigateTo(new MovieListFragment());
+        makeAPICall();
+    }
 
-
-
+    private void makeAPICall() {
 
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
-
         RetrofitClient.MovieApi movieApiClient = retrofitClient.getMovieApiClient();
-//        Retrofit tvApiClient = retrofitClient.getTvApiClient();
-
 
         Call<OmdbJsonResponse> call = movieApiClient.searchMoviesByTitle("Batman");
         call.enqueue(new Callback<OmdbJsonResponse>() {
@@ -56,10 +56,17 @@ public class MainActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
-
     }
 
-    public void logv(String message) {
+    public void navigateTo(Fragment destination) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragment_container, destination);
+        transaction.commit();
+    }
+
+    private void logv(String message) {
         Log.v("MainActivtyLog", message);
     }
+
 }
