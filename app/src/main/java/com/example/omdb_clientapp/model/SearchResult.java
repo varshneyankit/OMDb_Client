@@ -17,7 +17,7 @@ public class SearchResult {
 
     public SearchResult(String title, String year, String imdbID, String type, String poster) {
         this.title = title;
-        year = year;
+        this.year = year;
         this.imdbID = imdbID;
         this.type = type;
         this.poster = poster;
