@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.omdb_clientapp.MovieAdapter;
 import com.example.omdb_clientapp.R;
@@ -27,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieListFragment extends Fragment {
-
+    RecyclerView recyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,12 +48,6 @@ public class MovieListFragment extends Fragment {
                 makeApiSearchRequest(text.toString());
             }
         });
-    }
-
-    private void updateAdapterData(List<SearchResult> results) {
-
-
-
     }
 
     private void makeApiSearchRequest(String query) {
@@ -83,5 +79,14 @@ public class MovieListFragment extends Fragment {
                 t.printStackTrace();
             }
         });
+    }
+
+    private void updateAdapterData(List<SearchResult> results) {
+
+        MovieAdapter ma =new MovieAdapter(results);
+
+        recyclerView = recyclerView.findViewById(R.id.fragment_movie_list_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(ma);
     }
 }
