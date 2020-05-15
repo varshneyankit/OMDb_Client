@@ -50,6 +50,8 @@ public class MovieListFragment extends Fragment {
 
     private void updateAdapterData(List<SearchResult> results) {
 
+
+
     }
 
     private void makeApiSearchRequest(String query) {
@@ -61,11 +63,11 @@ public class MovieListFragment extends Fragment {
         call.enqueue(new Callback<OmdbJsonResponse>() {
             @Override
             public void onResponse(Call<OmdbJsonResponse> call, Response<OmdbJsonResponse> response) {
-                OmdbJsonResponse result = response.body();
+                OmdbJsonResponse jsonResult = response.body();
 
-                if (result != null && result.getResults() != null) {
-                    updateAdapterData(result.getResults());
-                    for (SearchResult r : result.getResults()) {
+                if (jsonResult != null && jsonResult.getResults() != null) {
+                    updateAdapterData(jsonResult.getResults());
+                    for (SearchResult r : jsonResult.getResults()) {
                         Log.d("Name ", r.getTitle());
                         Log.d("Year ", r.getYear());
                         Log.d("IMDB ", r.getImdbID());
