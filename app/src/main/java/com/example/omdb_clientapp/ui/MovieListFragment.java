@@ -22,6 +22,7 @@ import com.example.omdb_clientapp.model.OmdbJsonResponse;
 import com.example.omdb_clientapp.model.SearchResult;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieListFragment extends Fragment {
-    RecyclerView recyclerView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +49,10 @@ public class MovieListFragment extends Fragment {
                 makeApiSearchRequest(text.toString());
             }
         });
+        RecyclerView recyclerView = view.findViewById(R.id.fragment_movie_list_recycler_view);
+        MovieAdapter ma =new MovieAdapter(new ArrayList<>());
+        recyclerView.setAdapter(ma);
+
     }
 
     private void makeApiSearchRequest(String query) {
@@ -83,10 +88,5 @@ public class MovieListFragment extends Fragment {
 
     private void updateAdapterData(List<SearchResult> results) {
 
-        MovieAdapter ma =new MovieAdapter(results);
-
-        recyclerView = recyclerView.findViewById(R.id.fragment_movie_list_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(ma);
     }
 }
