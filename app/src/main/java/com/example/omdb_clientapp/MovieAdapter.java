@@ -56,5 +56,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             imdbview = itemView.findViewById(R.id.item_search_results_rating_view);
         }
     }
-
+ public List<SearchResult> getResults(){
+        return results;
+ }
 }
