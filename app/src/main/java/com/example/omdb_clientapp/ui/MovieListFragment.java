@@ -87,10 +87,7 @@ public class MovieListFragment extends Fragment {
     }
 
     private void updateAdapterData(List<SearchResult> results) {
-
-        List updateResult = upAdapter.getResults();
-        updateResult.add(results);
+        upAdapter.setResults(results);
         upAdapter.notifyDataSetChanged();
-
     }
 }
