@@ -60,7 +60,7 @@ public class MovieListFragment extends Fragment {
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
         RetrofitClient.MovieApi movieApiClient = retrofitClient.getMovieApiClient();
 
-        Call<OmdbJsonResponse> call = movieApiClient.searchMoviesByTitle(query);
+        Call<OmdbJsonResponse> call = movieApiClient.searchItemByName(query);
         call.enqueue(new Callback<OmdbJsonResponse>() {
             @Override
             public void onResponse(Call<OmdbJsonResponse> call, Response<OmdbJsonResponse> response) {
@@ -68,22 +68,25 @@ public class MovieListFragment extends Fragment {
 
                 if (jsonResult != null && jsonResult.getResults() != null) {
                     updateAdapterData(jsonResult.getResults());
-                    for (SearchResult r : jsonResult.getResults()) {
-                        Log.d("Name ", r.getTitle());
-                        Log.d("Year ", r.getYear());
-                        Log.d("IMDB ", r.getImdbID());
-                        Log.d("Type", r.getType());
-                        Log.d("Poster ", r.getPoster());
-                    }
+//                    for (SearchResult r : jsonResult.getResults()) {
+//                        Log.d("Name ", r.getTitle());
+//                        Log.d("Year ", r.getYear());
+//                        Log.d("IMDB ", r.getImdbID());
+//                        Log.d("Type", r.getType());
+//                        Log.d("Poster ", r.getPoster());
+//                    }
                 }
 
             }
+
 
             @Override
             public void onFailure(Call<OmdbJsonResponse> call, Throwable t) {
                 t.printStackTrace();
             }
         });
+
+
     }
 
     private void updateAdapterData(List<SearchResult> results) {

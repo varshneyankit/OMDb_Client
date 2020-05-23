@@ -1,7 +1,7 @@
 package com.example.omdb_clientapp.api;
 
 import com.example.omdb_clientapp.model.OmdbJsonResponse;
-import com.example.omdb_clientapp.model.SearchResult;
+import com.example.omdb_clientapp.model.ResultMetadata;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 
 public class RetrofitClient {
 
-    public static final String API_KEY = "8195ca5d";
+    private static final String API_KEY = "8195ca5d";
     private static RetrofitClient client = null;
     private Retrofit retrofit;
 
@@ -36,27 +36,21 @@ public class RetrofitClient {
         return movieApi;
     }
 
-    public Retrofit getTvApiClient() {
-        retrofit.create(TVApi.class);
-        return retrofit;
-    }
-
     public interface MovieApi {
 
-        default Call<OmdbJsonResponse> searchMoviesByTitle(String query) {
-            return performQuery(query, RetrofitClient.API_KEY);
+        default Call<OmdbJsonResponse> searchItemByName(String query) {
+            return searchItemByName(query, RetrofitClient.API_KEY);
+        }
+
+        default Call<ResultMetadata> fetchItemByImdbId(String query) {
+            return fetchItemByImdbId(query, RetrofitClient.API_KEY);
         }
 
         @GET("/")
-        Call<OmdbJsonResponse> performQuery(@Query("s") String name, @Query("apikey") String apikey);
+        Call<OmdbJsonResponse> searchItemByName(@Query("s") String name, @Query("apikey") String apikey);
 
+        @GET("/")
+        Call<ResultMetadata> fetchItemByImdbId(@Query("i") String imdbId, @Query("apikey") String apikey);
     }
-
-    public interface TVApi {
-
-        public abstract Call<List<ResponseBody>> searchTVByTitle();
-
-    }
-
 
 }
