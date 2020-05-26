@@ -89,5 +89,12 @@ public class MovieDataFragment extends Fragment {
         directors.setText(body.getDirector());
         cast.setText(body.getCast());
 
+        plot.setOnClickListener(v -> {
+            if (plot.getMaxLines() == Integer.MAX_VALUE) {
+                plot.setMaxLines(4);
+            } else
+                plot.setMaxLines(Integer.MAX_VALUE);
+        });
+
     }
 }

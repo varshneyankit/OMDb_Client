@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigateTo(new MovieListFragment(), false);
+
+
+
     }
 
     public void navigateTo(Fragment destination,boolean addToBackStack) {
