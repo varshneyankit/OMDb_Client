@@ -1,118 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:scrollbars="vertical">
+    android:padding="4dp">
 
-    <GridLayout
+
+    <ImageView
+        android:id="@+id/fragment_movie_data_poster"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/fragment_movie_data_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:padding="4dp"
-        android:rowCount="7">
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:hint="Title"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_movie_data_poster"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/fragment_movie_data_poster"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_rowSpan="3" />
+    <TextView
+        android:id="@+id/fragment_movie_data_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:hint="Year"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_movie_data_rated"
+        app:layout_constraintStart_toEndOf="@+id/fragment_movie_data_poster"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_title" />
 
-        <TextView
-            android:id="@+id/fragment_movie_data_title"
-            android:layout_columnSpan="2"
-            android:layout_margin="8dp"
-            android:hint="Title"
-            android:textSize="32dp" />
+    <TextView
+        android:id="@+id/fragment_movie_data_rated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Rated"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_movie_data_year"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_title" />
 
+    <TextView
+        android:id="@+id/fragment_movie_data_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="GENRE"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_movie_data_poster"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_year" />
 
-        <TextView
-            android:id="@+id/fragment_movie_data_year"
-            android:layout_margin="4dp"
-            android:hint="Year"
-            android:textSize="16dp" />
+    <TextView
+        android:id="@+id/fragment_movie_data_runtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:hint="Runtime"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_poster" />
 
-        <TextView
-            android:id="@+id/fragment_movie_data_rated"
-            android:layout_margin="4dp"
-            android:hint="Rated"
-            android:textSize="16dp" />
+    <TextView
+        android:id="@+id/fragment_movie_data_imdbRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:hint="IMDbRatings"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_poster" />
 
-        <TextView
-            android:id="@+id/fragment_movie_data_genre"
-            android:layout_columnSpan="2"
-            android:layout_margin="4dp"
-            android:hint="GENRE"
-            android:textSize="16dp" />
+    <TextView
+        android:id="@+id/fragment_movie_data_plot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="4"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_runtime" />
 
-        <TextView
-            android:id="@+id/fragment_movie_data_runtime"
-            android:layout_gravity="left"
-            android:layout_margin="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="32dp"
-            android:hint="Runtime"
-            android:textSize="16dp" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Directors"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_plot" />
 
-        <TextView
-            android:id="@+id/fragment_movie_data_imdbRating"
-            android:layout_row="3"
-            android:layout_column="2"
-            android:layout_gravity="right"
-            android:layout_margin="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="32dp"
-            android:hint="IMDbRatings"
-            android:textSize="16dp" />
+    <TextView
+        android:id="@+id/fragment_movie_data_directors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Name of directors of the movie"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_plot" />
 
-        <TextView
-            android:id="@+id/fragment_movie_data_plot"
-            android:layout_columnSpan="3"
-            android:layout_margin="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp"
-            android:maxLines="4"
-            android:scrollbars="vertical"
-            android:textSize="16dp"
-            />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Cast"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <TextView
-            android:layout_margin="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="Directors"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/fragment_movie_data_directors"
-            android:layout_columnSpan="2"
-            android:layout_margin="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:hint="Name of directors of the movie"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_margin="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Cast"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/fragment_movie_data_cast"
-            android:layout_columnSpan="2"
-            android:layout_margin="4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:hint="Cast starred in the movies"
-            android:textSize="16dp" />
-    </GridLayout>
-</ScrollView>
+    <TextView
+        android:id="@+id/fragment_movie_data_cast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Cast starred in the movies"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_movie_data_directors" />
+</androidx.constraintlayout.widget.ConstraintLayout>
