@@ -8,20 +8,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardElevation="8dp">
+        app:cardElevation="2dp">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:padding="8dp">
 
             <ImageView
                 android:id="@+id/item_search_results_image_view"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_margin="4dp" />
+                android:layout_margin="4dp"
+                android:maxWidth="150dp"
+                android:maxHeight="200dp"
+                android:src="@color/colorAccent" />
 
             <TextView
                 android:id="@+id/item_search_results_title_view"
@@ -48,7 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_search_results_title_view"
-                android:layout_alignParentEnd="true"
+                android:layout_alignEnd="@id/item_search_results_image_view"
+                android:layout_alignRight="@id/item_search_results_year_view"
                 android:layout_margin="4dp"
                 android:text="Type"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
