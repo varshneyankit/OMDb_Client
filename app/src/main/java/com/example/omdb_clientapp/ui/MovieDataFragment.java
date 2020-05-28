@@ -71,7 +71,8 @@ public class MovieDataFragment extends Fragment {
         TextView title = getView().findViewById(R.id.fragment_movie_data_title);
         TextView year = getView().findViewById(R.id.fragment_movie_data_year);
         TextView rated = getView().findViewById(R.id.fragment_movie_data_rated);
-        TextView genre = getView().findViewById(R.id.fragment_movie_data_genre);
+        // TODO implement genre buttons
+        TextView genre = getView().findViewById(R.id.fragment_movie_data_directors);
         TextView runtime = getView().findViewById(R.id.fragment_movie_data_runtime);
         TextView imdbRatings = getView().findViewById(R.id.fragment_movie_data_imdbRating);
         TextView plot = getView().findViewById(R.id.fragment_movie_data_plot);
@@ -82,11 +83,16 @@ public class MovieDataFragment extends Fragment {
         title.setText(body.getTitle());
         year.setText(body.getYear());
         rated.setText(body.getRated());
-        genre.setText(body.getGenre());
-        runtime.setText(body.getRuntime());
-        imdbRatings.setText(body.getImdbRating());
-        plot.setText(body.getPlot());
         directors.setText(body.getDirector());
+
+        String[] genres = body.getGenre().split(", ");
+        if (genres.length > 0) {
+            genre.setText(genres[0]);
+        }
+
+        runtime.setText(body.getRuntime());
+        imdbRatings.setText(body.getImdbRating() + " / 10");
+        plot.setText(body.getPlot());
         cast.setText(body.getCast());
 
         plot.setOnClickListener(v -> {
