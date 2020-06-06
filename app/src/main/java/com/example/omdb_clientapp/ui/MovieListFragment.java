@@ -3,7 +3,6 @@ package com.example.omdb_clientapp.ui;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +29,7 @@ import retrofit2.Response;
 
 public class MovieListFragment extends Fragment {
     MovieAdapter upAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MovieListFragment extends Fragment {
             }
         });
         RecyclerView recyclerView = view.findViewById(R.id.fragment_movie_list_recycler_view);
-        upAdapter =new MovieAdapter(new ArrayList<>());
+        upAdapter = new MovieAdapter(new ArrayList<>());
         recyclerView.setAdapter(upAdapter);
 
 

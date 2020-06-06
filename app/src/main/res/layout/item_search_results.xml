@@ -1,77 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:layout_width="match_parent"
-        app:cardElevation="2dp"
-        app:cardCornerRadius="8dp"
-        android:layout_height="match_parent">
+        app:cardElevation="2dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:padding="8dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="8dp">
 
             <ImageView
                 android:id="@+id/item_search_results_image_view"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:src="@color/colorAccent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.83"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="4dp"
+                android:maxWidth="150dp"
+                android:maxHeight="200dp"
+                android:src="@color/colorAccent" />
 
             <TextView
                 android:id="@+id/item_search_results_title_view"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
-                android:hint="Title"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_search_results_image_view" />
+                android:layout_below="@id/item_search_results_image_view"
+                android:layout_margin="4dp"
+                android:text="Title"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/item_search_results_year_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:hint="Year"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_search_results_title_view" />
+                android:layout_below="@id/item_search_results_title_view"
+                android:layout_alignParentStart="true"
+                android:layout_margin="4dp"
+                android:text="Year"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
             <TextView
                 android:id="@+id/item_search_results_type_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="4dp"
-                android:hint="Type"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_search_results_title_view" />
+                android:layout_below="@id/item_search_results_title_view"
+                android:layout_alignEnd="@id/item_search_results_image_view"
+                android:layout_alignRight="@id/item_search_results_year_view"
+                android:layout_margin="4dp"
+                android:text="Type"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
